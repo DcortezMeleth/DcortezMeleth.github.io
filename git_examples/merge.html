@@ -13,7 +13,7 @@
 		showLabel: true
 	    },
 	    commit: {
-	        spacingY: 50,
+	        spacingY: 60,
 		dot: {
 		    size: 12
 		},
@@ -37,31 +37,18 @@
 	    author: "Bartek <bartosz.sadel@onwelo.com>"
 	});
 
-        var master = gitgraph.branch("master");
-	gitgraph.commit("Some important Commit");
-	var develop = gitgraph.branch("develop");
-	develop.commit("Fixed memory leak!");
-	var myfeature = develop.branch({
-	    name: "feature/JPK-1271",
-	    parentBranch: develop,
-	    column: 2
+        var develop = gitgraph.branch("develop");
+	develop.commit("Some important commit");
+	var myfeature = gitgraph.branch({
+            name: "feature/JPK-1721",
+	    parentBranch: develop
 	});
-	myfeature.commit("JPK-1271 added Schema version 2")
+	myfeature.commit("JPK-1721 export schema 2");
+	develop.commit("JPK-1213 fixed grid width").commit("JPK-1328 new configuration");
+	develop.merge(myfeature);
+	myfeature.commit("JPK-1721 added tests");
+	develop.commit("JPK-1348 fixed filing test");
 
-	var hotfix = gitgraph.branch({
-	    parentBranch: develop,
-	    name: "bugfix/JPK-1221",
-	    column: 3
-	});
-        hotfix.commit("JPK-1221 fixed NPE");
-
-	myfeature.commit("JPK-1221 fixed NPE Cherry-picked from sf3f3r32");
-	hotfix.merge(develop, "Merge JPK-1221 into develop");
-	myfeature.merge(develop, "Merge JPK-1271 into develop");
-	develop.merge(master, {
-	    message: "Release 2.3.0",
-	    tag: "2.3.0"
-	});
-        develop.checkout();
+        myfeature.merge(develop);
     </script>
 </body>
