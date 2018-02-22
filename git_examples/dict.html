@@ -1,0 +1,66 @@
+<head></head>
+<body>
+    <script src="gitgraph.js"></script>
+    <link rel="stylesheet" type="text/css" href="gitgraph.css"/>
+    <canvas id="gitGraph"></canvas>
+
+    <script>
+        var templateConfig = {
+	    colors: ["#0e68ce", "#7fdb6a", "#966842", "#f44747", "#eedc31"],
+	    branch: {
+	        lineWidth: 8,
+		spacingX: 50,
+		showLabel: true
+	    },
+	    commit: {
+	        spacingY: 60,
+		dot: {
+		    size: 12
+		},
+		message: {
+		    displayAuthor: true,
+		    displayBranch: true,
+		    displayHash: false,
+		    font: "normal 12pt Arial"
+		},
+		shouldDisplayTooltipsInCompactMode: true,
+		tooltipHTMLFormatter: function(commit) {
+		    return "" + commit.sha1 + ": " + commit.message;
+		}
+	    },
+	};
+        var myTemplate = new GitGraph.Template(templateConfig);
+
+        var gitgraph = new GitGraph({
+	    template: myTemplate,
+	    reverseArrow: true,
+	    author: "Bartek <bartosz.sadel@onwelo.com>"
+	});
+
+        var master = gitgraph.branch("master");
+	gitgraph.commit("Some important Commit");
+	var develop = gitgraph.branch("develop");
+	develop.commit();
+	var myfeature = develop.branch({
+	    name: "feature/JPK-1271",
+	    parentBranch: develop,
+	    column: 2
+	});
+	myfeature.commit("JPK-1271 added Schema version 2")
+
+	var hotfix = gitgraph.branch({
+	    parentBranch: develop,
+	    name: "bugfix/JPK-1221",
+	    column: 3
+	});
+        hotfix.commit("JPK-1221 fixed NPE");
+
+	hotfix.merge(develop, "Merge JPK-1221 into develop");
+	myfeature.merge(develop, "Merge JPK-1271 into develop");
+	develop.merge(master, {
+	    message: "Release 2.3.0",
+	    tag: "2.3.0"
+	});
+        develop.checkout();
+    </script>
+</body>

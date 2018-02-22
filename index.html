@@ -1,59 +1,7 @@
 <head></head>
 <body>
-    <script src="gitgraph.js"></script>
-    <link rel="stylesheet" type="text/css" href="gitgraph.css"/>
-    <canvas id="gitGraph"></canvas>
-
-    <script>
-        var templateConfig = {
-	    colors: ["#F00", "#0F0", "#00F"],
-	    branch: {
-	        lineWidth: 8,
-		spacingX: 50,
-		showLabel: true
-	    },
-	    commit: {
-	        spacingY: -80,
-		dot: {
-		    size: 12
-		},
-		message: {
-		    displayAuthor: true,
-		    displayBranch: true,
-		    displayHash: false,
-		    font: "normal 12pt Arial"
-		},
-		shouldDisplayTooltipsInCompactMode: true,
-		tooltipHTMLFormatter: function(commit) {
-		    return "" + commit.sha1 + ": " + commit.message;
-		}
-	    },
-	};
-        var myTemplate = new GitGraph.Template(templateConfig);
-
-        var gitgraph = new GitGraph({
-	    template: myTemplate,
-	    reverseArrow: false,
-	    orientation: "horizontal",
-	    mode: "compact" 
-	});
-
-        var master = gitgraph.branch("master");
-	gitgraph.commit().commit().commit();
-	var develop = gitgraph.branch("develop");
-	develop.commit();
-	var myfeature = develop.branch({
-	    name: "feature/JPK-1271",
-	    parentBranch: develop,
-	    column: 2
-	});
-	myfeature.commit("JPK-1271 added Schema version 2")
-
-	var hotfix = gitgraph.branch({
-	    parentBranch: develop,
-	    name: "bugfix/JPK-1221",
-	    column: 3
-	});
-        hotfix.commit("JPK-1221 fixed NPE");
-    </script>
+	<p>Git examples: </p>
+	<ul>
+		<li><a href="./git_examples/dict.html">Git Dictionary</a></li>
+	</ul> 
 </body>
