@@ -13,11 +13,11 @@ The major improvement in JUnit 5 release it's new structure. As earlier everythi
 
 Parts of this new version are separated into 3 main groups. First of them, called _Platform_,  collects artifacts used by IDE's and build tools to discover and execute tests. Second one, named _Jupiter_, contains API for writing tests. Last one, the _Vintage_, supports migration process thanks to possibility of running old tests (prior to version 5) on a new platform.
 
-![modules]({{ site.baseurl }}/images/junit5_hype/modules.png)
+![smaller]({{ site.baseurl }}/images/junit5_hype/modules.png)
 
 To better understand how this modules work and where it place for them, we can look at diagram below.
 
-![layers]({{ site.baseurl }}/images/junit5_hype/layers.png)
+![smaller]({{ site.baseurl }}/images/junit5_hype/layers.png)
 
 So how it works? First build tool like maven, calls _JUnit Platform_ to discover test which should be run. Then platform looks for provided engines end asks them to find tests. Each engine can look for test in other ways. This way we can have _Jupiter Engine_ looking for test written with a use of new API. We can also have _Vintage Engine_ looking for test using elements of older versions. What's more, we can implement our own engine and use it with _JUnit Platform_. This way tools like Intelij can support only one solution at the same time giving us possibility of using many different libraries. This enables other libs like Spock or TestNg to be ported to this ecosystem to make a life of tools developers a little bit easier.
 
