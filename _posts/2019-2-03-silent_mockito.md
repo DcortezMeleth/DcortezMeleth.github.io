@@ -40,7 +40,7 @@ annotation or if you are using rule approach
 ```java
 @Rule
 public MockitoRule rule = 
-                MockitoJUnit.rule().strictness(Strictness.LENIENT); 
+            MockitoJUnit.rule().strictness(Strictness.LENIENT); 
 ```
 
 rule, eventually (the same behavior):
