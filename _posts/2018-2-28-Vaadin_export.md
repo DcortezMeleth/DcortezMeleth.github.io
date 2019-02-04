@@ -3,6 +3,8 @@ layout: post
 title: Vaadin export button - My eyes are bleeding
 ---
 
+Have you ever encountered piece of a code that was painful to watch? So bad that you wanted to get rid of it as fast as you can? You're not alone. Here I will share with you one of such moments I had while working with Vaadin.
+
 ### What have I just seen?
 
 Lately I had an opportunity to fix some bugs in our application using Vaadin for front-end development. Despite many complainants about this framework I have decided to give a chance. I thought that it can be that bad. But believe, was I wrong. What is saw in that memorable day was thrilling. I first I thought that someone on our team just didn't know what he was doing.
@@ -58,3 +60,8 @@ I ended up adding following code into all event listeners on export variables.
 Luckily for my, all those fields were available to me and existed in the same scope as button. But what if those values would be distributed into more components? What if there were more of them than 2 or 3?
 
 If you somehow managed to find better solution share it with me. I still have a little light of hope in my heart, that there exists a better, cleaner solution.
+
+
+### Exclaimer
+
+I had this kind of problems with Vaadin 7. I newer versions hopefully they are solved in some other, cleaner and non-hacky way.

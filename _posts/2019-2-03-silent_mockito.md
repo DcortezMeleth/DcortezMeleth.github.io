@@ -3,6 +3,8 @@ layout: post
 title: Unnecessary stubbing in new Mockito
 ---
 
+If you are here I guess you have also encountered UnnecessaryStubbingException in your code. Probably after migrating to new Mockito version or refactoring some parts of your codebase. In this article will try to investigate what this exception means to us and how to resolve it.
+
 ### New Feature
 
 With version 2.x _Mockito_ introduced a new feature. Since than all mocks which were unused are during test causes test to fail with [UnnecessaryStubbingException](https://github.com/mockito/mockito/blob/release/2.x/src/main/java/org/mockito/exceptions/misusing/UnnecessaryStubbingException.java). I have tried to dig for a issue with reasoning for this but all I managed to achieve is finding [commit](https://github.com/mockito/mockito/commit/0214dbfec662f920f9180539b774840249398aa6#diff-6d2ff66e977b4dedb5417e0a2778057c) which created the aforementioned exception. It's quite interesting that there is no evidence of this feature even on long [release notes](https://github.com/mockito/mockito/blob/release/2.x/doc/release-notes/official.md) list. Nevertheless it's here from early **2.0.0** beta version of Mockito library.
@@ -63,7 +65,7 @@ Personally I'm currently using only _JUnit_ for testing my code but if you know 
 
 ### Motivation
 
-My motivation for writing this article is my currently most upvotes [answer](https://stackoverflow.com/questions/42947613/how-to-resolve-unneccessary-stubbing-exception?answertab=votes#tab-top) on StackOverflow. Yup, I know, there is not a lot of them, but still, you have to start with something. 
+My motivation for writing this article was my currently most upvotes [answer](https://stackoverflow.com/questions/42947613/how-to-resolve-unneccessary-stubbing-exception?answertab=votes#tab-top) on StackOverflow. Yup, I know, there is not a lot of them, but still, you have to start with something. 
 
 
 If you have different opinion on this subject please let me know. I would love to disuse it! :)
