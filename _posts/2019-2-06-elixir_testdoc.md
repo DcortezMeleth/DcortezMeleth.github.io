@@ -12,9 +12,9 @@ As official documentation of Elixir states, documentation is a first-class citiz
 Sample JavaDoc:
 ```java
 /**
- * Retrieves parameter from application context. You can also use
- * {@link #getParamFromContext(String, Class)} to retrieve parameters 
- * other than strings.
+ * Retrieves parameter from application context. 
+ * You can also use {@link #getParamFromContext(String, Class)} 
+ * to retrieve parameters other than strings.
  *
  * @param paramName Name of the parameter in upper case.
  * @return Return parameter as String when found, null otherwise.
@@ -39,7 +39,8 @@ Testdoc in practice:
 defmodule Fib do
 
   @doc ~S"""
-    Returns n-th element of Fibonacci sequence. Count elements starting at 0.
+    Returns n-th element of Fibonacci sequence. 
+    Element with index 0 is first valid one.
 
   ## Examples
 
